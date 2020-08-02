@@ -13,7 +13,7 @@ like this:
   public function initialize()
   {
     parent::initialize();
-    $this->Crud->config('listeners.jsonApi.withJsonApiVersion', true);
+    $this->Crud->SetConfig('listeners.jsonApi.withJsonApiVersion', true);
   }
 
 withJsonApiVersion
@@ -88,7 +88,7 @@ to manipulate the generated json response. For example:
   public function initialize()
   {
     parent::initialize();
-    $this->Crud->config('listeners.jsonApi.jsonOptions', [
+    $this->Crud->SetConfig('listeners.jsonApi.jsonOptions', [
       JSON_HEX_QUOT,
       JSON_UNESCAPED_UNICODE,
     ]);
@@ -108,7 +108,7 @@ Please note that entity names:
 
 .. code-block:: phpinline
 
-  $this->Crud->config('listeners.jsonApi.include', [
+  $this->Crud->SetConfig('listeners.jsonApi.include', [
     'currency', // belongsTo relationship and thus singular
     'cultures' // hasMany relationship and thus plural
   ]);
@@ -127,7 +127,7 @@ generated json. For example:
 
 .. code-block:: phpinline
 
-  $this->Crud->config('listeners.jsonApi.fieldSets', [
+  $this->Crud->SetConfig('listeners.jsonApi.fieldSets', [
     'countries' => [ // main record
       'name'
     ],
@@ -180,7 +180,7 @@ by specifying a callable.
 
 .. code-block:: phpinline
 
-  $this->Crud->listener('jsonApi')->config('queryParameter.parent', [
+  $this->Crud->listener('jsonApi')->SetConfig('queryParameter.parent', [
     'callable' => function ($queryData, $subject) {
       $subject->query->where('parent' => $queryData);
     }
